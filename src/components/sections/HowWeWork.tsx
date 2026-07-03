@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function HowWeWork() {
   return (
-    <section id="how-it-works" className="px-6 py-16 max-w-7xl mx-auto w-full">
+    <section id="how-it-works" className="scroll-mt-20 px-6 py-16 max-w-7xl mx-auto w-full">
       <div className="grid gap-12 lg:grid-cols-2">
         {/* Left Column: Heading and Image */}
         <div className="flex flex-col justify-between">

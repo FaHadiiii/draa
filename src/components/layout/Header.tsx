@@ -137,7 +137,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-grey">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between relative">
+      <div className="max-w-7xl mx-auto pl-6 pr-4 h-16 flex items-center justify-between relative">
         {/* Left Side: Mobile Menu Button (Hamburger) - visible on mobile only */}
         <div className="flex lg:hidden items-center">
           <button
@@ -274,13 +274,13 @@ export default function Header() {
                   className="fixed inset-0 z-10"
                   onClick={() => setDropdownOpen(false)}
                 />
-                <div className="absolute right-0 mt-1.5 w-40 bg-white border border-grey rounded-xl shadow-lg py-1 z-20 animate-in fade-in slide-in-from-top-1 duration-100">
+                <div className="absolute right-0 mt-1.5 w-40 bg-white border border-grey rounded-lg shadow-lg py-1 z-20 animate-in fade-in slide-in-from-top-1 duration-100">
                   <button
                     onClick={() => handleLocaleChange("en")}
                     className={`w-full text-left px-3.5 py-2 text-xs font-medium transition-colors flex items-center justify-between ${
                       locale === "en"
-                        ? "text-primary bg-zinc-50"
-                        : "text-zinc-650 hover:text-primary hover:bg-zinc-50/50"
+                        ? "text-primary"
+                        : "text-zinc-650 hover:text-primary"
                     }`}
                   >
                     <div className="flex items-center gap-x-2">
@@ -295,8 +295,8 @@ export default function Header() {
                     onClick={() => handleLocaleChange("ms")}
                     className={`w-full text-left px-3.5 py-2 text-xs font-medium transition-colors flex items-center justify-between ${
                       locale === "ms"
-                        ? "text-primary bg-zinc-50"
-                        : "text-zinc-650 hover:text-primary hover:bg-zinc-50/50"
+                        ? "text-primary"
+                        : "text-zinc-650 hover:text-primary"
                     }`}
                   >
                     <div className="flex items-center gap-x-2">

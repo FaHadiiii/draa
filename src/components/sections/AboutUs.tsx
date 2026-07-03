@@ -1,6 +1,9 @@
 export default function AboutUs() {
   return (
-    <section id="about" className="px-6 py-16 max-w-7xl mx-auto w-full">
+    <section
+      id="about"
+      className="scroll-mt-20 px-6 py-16 max-w-7xl mx-auto w-full"
+    >
       <div className="grid lg:grid-cols-2">
         {/* Left Text */}
         <div className="flex flex-col justify-center">

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function PropertyCatalog() {
   return (
-    <section id="catalog" className="px-6 py-16 max-w-7xl mx-auto w-full">
+    <section id="catalog" className="scroll-mt-20 px-6 py-16 max-w-7xl mx-auto w-full">
       <div className="flex sm:flex-col md:flex-row md:items-end justify-between mb-8">
         <div>
           <h2 className="text-2xl font-bold tracking-tight text-primary">

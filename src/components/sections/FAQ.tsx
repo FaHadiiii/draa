@@ -2,7 +2,7 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="px-6 py-16 max-w-7xl mx-auto w-full border-b border-grey"
+      className="scroll-mt-20 px-6 py-16 max-w-7xl mx-auto w-full border-b border-grey"
     >
       <div className="grid gap-8 lg:grid-cols-3">
         {/* Left Column: Heading */}
