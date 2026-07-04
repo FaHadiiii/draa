@@ -2,15 +2,15 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="scroll-mt-20 px-6 py-16 max-w-7xl mx-auto w-full border-b border-grey"
+      className="scroll-mt-20 px-6 py-8 max-w-7xl mx-auto w-full"
     >
       <div className="grid gap-8 lg:grid-cols-3">
         {/* Left Column: Heading */}
         <div className="lg:col-span-1">
-          <h2 className="text-2xl font-bold tracking-tight text-primary">
+          <h2 className="text-xl font-semibold tracking-tight text-primary">
             FAQ Section
           </h2>
-          <p className="mt-3 text-sm text-zinc-650 max-w-xs">
+          <p className="mt-2 text-xs text-zinc-500 sm:max-w-xs">
             We have made the process of working with us as simple and
             transparent as possible.
           </p>

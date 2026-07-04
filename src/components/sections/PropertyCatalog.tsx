@@ -2,10 +2,13 @@ import Image from "next/image";
 
 export default function PropertyCatalog() {
   return (
-    <section id="catalog" className="scroll-mt-20 px-6 py-16 max-w-7xl mx-auto w-full">
+    <section
+      id="catalog"
+      className="scroll-mt-20 px-6 py-8 max-w-7xl mx-auto w-full"
+    >
       <div className="flex sm:flex-col md:flex-row md:items-end justify-between mb-8">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-primary">
+          <h2 className="text-xl font-semibold tracking-tight text-primary">
             Property Catalog
           </h2>
           <p className="mt-1.5 text-xs text-zinc-500 sm:block hidden">
@@ -14,7 +17,7 @@ export default function PropertyCatalog() {
         </div>
         {/* Navigation Arrows */}
         <div className="flex items-center gap-x-2">
-          <button className="w-8 h-8 rounded-full border border-grey hover:bg-light-grey flex items-center justify-center transition-colors">
+          <button className="w-7 h-7 rounded-full border border-grey hover:bg-light-grey flex items-center justify-center transition-colors">
             <svg
               className="w-4 h-4 text-primary"
               fill="none"
@@ -29,7 +32,7 @@ export default function PropertyCatalog() {
               />
             </svg>
           </button>
-          <button className="w-8 h-8 rounded-full bg-primary hover:bg-primary/95 flex items-center justify-center transition-colors text-white">
+          <button className="w-7 h-7 rounded-full bg-primary hover:bg-primary/95 flex items-center justify-center transition-colors text-white">
             <svg
               className="w-4 h-4"
               fill="none"
@@ -61,9 +64,7 @@ export default function PropertyCatalog() {
             />
           </div>
           <div className="p-4">
-            <h3 className="text-sm font-semibold text-primary">
-              Office spaces
-            </h3>
+            <h3 className="text-sm font-medium text-primary">Office spaces</h3>
             <p className="mt-1 text-xs font-normal text-zinc-500">
               4000+ properties
             </p>
@@ -82,7 +83,7 @@ export default function PropertyCatalog() {
             />
           </div>
           <div className="p-4">
-            <h3 className="text-sm font-semibold text-primary">
+            <h3 className="text-sm font-medium text-primary">
               Warehouse spaces
             </h3>
             <p className="mt-1 text-xs font-normal text-zinc-500">
@@ -103,7 +104,7 @@ export default function PropertyCatalog() {
             />
           </div>
           <div className="p-4">
-            <h3 className="text-sm font-semibold text-primary">Land plots</h3>
+            <h3 className="text-sm font-medium text-primary">Land plots</h3>
             <p className="mt-1 text-xs font-normal text-zinc-500">
               2000+ properties
             </p>

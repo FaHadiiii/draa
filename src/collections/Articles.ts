@@ -1,44 +1,44 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from "payload";
 
 export const Articles: CollectionConfig = {
-  slug: 'articles',
+  slug: "articles",
   admin: {
-    useAsTitle: 'title',
-    defaultColumns: ['title', 'slug', 'category', 'updatedAt'],
+    useAsTitle: "title",
+    defaultColumns: ["title", "slug", "category", "updatedAt"],
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
+      name: "title",
+      type: "text",
       required: true,
       localized: true,
     },
     {
-      name: 'slug',
-      type: 'text',
+      name: "slug",
+      type: "text",
       required: true,
       unique: true,
       admin: {
-        position: 'sidebar',
+        position: "sidebar",
       },
     },
     {
-      name: 'featuredImage',
-      type: 'upload',
-      relationTo: 'media',
+      name: "featuredImage",
+      type: "upload",
+      relationTo: "media",
       required: true,
     },
     {
-      name: 'category',
-      type: 'relationship',
-      relationTo: 'categories',
+      name: "category",
+      type: "relationship",
+      relationTo: "categories",
       hasMany: true,
     },
     {
-      name: 'content',
-      type: 'richText',
+      name: "content",
+      type: "richText",
       required: true,
       localized: true,
     },
   ],
-}
+};
