@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-grey bg-white py-8 px-6">
-      <div className="max-w-7xl px-6 mx-auto flex flex-col md:flex-row items-center justify-between gap-y-4 text-xs text-zinc-500">
+      <div className="2xl:px-0 2xl:max-w-7xl 2xl:mx-auto flex flex-col md:flex-row items-center justify-between gap-y-4 text-xs text-zinc-500">
         <span>
           &copy; {new Date().getFullYear()} DrAA Training & Consultancy
           (TR0343046-X)

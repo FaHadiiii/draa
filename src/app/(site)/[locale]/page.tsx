@@ -5,7 +5,6 @@ import AboutUs from "@/components/sections/AboutUs";
 import PropertyCatalog from "@/components/sections/PropertyCatalog";
 import HowWeWork from "@/components/sections/HowWeWork";
 import FoundersCorner from "@/components/sections/FoundersCorner";
-import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 
 export default function Home() {
@@ -14,26 +13,25 @@ export default function Home() {
       {/* Header / Navbar */}
       <Header />
 
-      {/* Hero Section */}
-      <Hero />
+      <main className="w-full px-6 2xl:px-0 2xl:max-w-7xl 2xl:mx-auto">
+        {/* Hero Section */}
+        <Hero />
 
-      {/* About Us Section */}
-      <AboutUs />
+        {/* About Us Section */}
+        <AboutUs />
 
-      {/* Property Catalog Section */}
-      <PropertyCatalog />
+        {/* Property Catalog Section */}
+        <PropertyCatalog />
 
-      {/* How we work Section */}
-      <HowWeWork />
+        {/* How we work Section */}
+        <HowWeWork />
 
-      {/* Founders corner Section */}
-      <FoundersCorner />
+        {/* Founders corner Section */}
+        <FoundersCorner />
 
-      {/* FAQ Section */}
-      <FAQ />
-
-      {/* CTA Section */}
-      <CTA />
+        {/* CTA Section */}
+        <CTA />
+      </main>
 
       {/* Footer */}
       <Footer />

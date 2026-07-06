@@ -5,7 +5,7 @@ export default function HowWeWork() {
   return (
     <section
       id="how-it-works"
-      className="scroll-mt-20 px-6 py-8 max-w-7xl mx-auto w-full"
+      className="scroll-mt-20 px-6 py-8 w-full"
     >
       <div className="grid gap-12 lg:grid-cols-2">
         {/* Left Column: Heading and Image */}

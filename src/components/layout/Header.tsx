@@ -149,20 +149,37 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-grey">
-      <div className="max-w-7xl mx-auto pl-6 pr-4 h-16 flex items-center justify-between relative">
-        {/* Left Side: Mobile Menu Button (Hamburger) - visible on mobile only */}
-        <div className="flex lg:hidden items-center">
+      <div className="px-6 2xl:px-0 2xl:max-w-7xl 2xl:mx-auto h-16 flex items-center justify-between relative">
+        {/* Left Side: Logo & Mobile Menu Toggle */}
+        <div className="flex items-center gap-x-4">
+          {/* Mobile Menu Button (Hamburger) - visible on mobile only */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-zinc-650 hover:text-primary focus:outline-none"
+            className="lg:hidden text-zinc-650 hover:text-primary focus:outline-none"
             aria-label="Toggle Menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
+
+          {/* Logo */}
+          <Link
+            href={`/${locale}`}
+            onClick={handleLogoClick}
+            className="flex items-center"
+          >
+            <Image
+              src="/draa-solid.svg"
+              alt="DrAA Training & Consultancy Logo"
+              width={130}
+              height={38}
+              priority
+              className="h-11 w-auto"
+            />
+          </Link>
         </div>
 
-        {/* Left Navigation Links - desktop only */}
-        <nav className="hidden lg:flex items-center gap-x-6 text-sm font-medium text-zinc-650">
+        {/* Center Navigation Links - desktop only */}
+        <nav className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 items-center gap-x-6 text-sm font-medium text-zinc-650">
           <a
             href={getLink("#about")}
             className={`transition-colors text-xs ${
@@ -204,24 +221,6 @@ export default function Header() {
             {locale === "ms" ? "Soalan Lazim" : "FAQs"}
           </a>
         </nav>
-
-        {/* Center Logo - perfectly centered horizontally and vertically */}
-        <div className="absolute pl-2 sm:pl-4 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-          <Link
-            href={`/${locale}`}
-            onClick={handleLogoClick}
-            className="flex items-center"
-          >
-            <Image
-              src="/draa-solid.svg"
-              alt="DrAA Training & Consultancy Logo"
-              width={130}
-              height={38}
-              priority
-              className="h-11 w-auto"
-            />
-          </Link>
-        </div>
 
         {/* Right Navigation Controls */}
         <div className="flex items-center gap-x-4">
