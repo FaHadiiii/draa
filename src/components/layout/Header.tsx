@@ -71,6 +71,15 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const navItems = [
+  { id: "about", label: "About Us" },
+  { id: "services", label: "Services" },
+  { id: "domain", label: "Domain" },
+  { id: "methodology", label: "Methodology" },
+  { id: "founder", label: "Founder" },
+  { id: "insights", label: "Insights" },
+] as const;
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -89,7 +98,6 @@ export default function Header() {
     };
     window.addEventListener("scroll", handleScroll);
 
-    const sections = ["about", "catalog", "how-it-works", "faq"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -101,7 +109,7 @@ export default function Header() {
       { rootMargin: "-30% 0px -60% 0px" },
     );
 
-    sections.forEach((id) => {
+    navItems.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) {
         observer.observe(el);
@@ -148,7 +156,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-grey">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md">
       <div className="px-6 2xl:px-0 2xl:max-w-7xl 2xl:mx-auto h-16 flex items-center justify-between relative">
         {/* Left Side: Logo & Mobile Menu Toggle */}
         <div className="flex items-center gap-x-4">
@@ -173,53 +181,26 @@ export default function Header() {
               width={130}
               height={38}
               priority
-              className="h-11 w-auto"
+              className="h-10 w-auto"
             />
           </Link>
         </div>
 
         {/* Center Navigation Links - desktop only */}
         <nav className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 items-center gap-x-6 text-sm font-medium text-zinc-650">
-          <a
-            href={getLink("#about")}
-            className={`transition-colors text-xs ${
-              activeSection === "about"
-                ? "text-primary font-medium"
-                : "text-zinc-500 hover:text-primary"
-            }`}
-          >
-            {locale === "ms" ? "Tentang Kami" : "About Us"}
-          </a>
-          <a
-            href={getLink("#catalog")}
-            className={`transition-colors text-xs ${
-              activeSection === "catalog"
-                ? "text-primary font-medium"
-                : "text-zinc-500 hover:text-primary"
-            }`}
-          >
-            {locale === "ms" ? "Blog & Artikel" : "Blogs & Articles"}
-          </a>
-          <a
-            href={getLink("#how-it-works")}
-            className={`transition-colors text-xs ${
-              activeSection === "how-it-works"
-                ? "text-primary font-medium"
-                : "text-zinc-500 hover:text-primary"
-            }`}
-          >
-            {locale === "ms" ? "Buku" : "Books"}
-          </a>
-          <a
-            href={getLink("#faq")}
-            className={`transition-colors text-xs ${
-              activeSection === "faq"
-                ? "text-primary font-medium"
-                : "text-zinc-500 hover:text-primary"
-            }`}
-          >
-            {locale === "ms" ? "Soalan Lazim" : "FAQs"}
-          </a>
+          {navItems.map(({ id, label }) => (
+            <a
+              key={id}
+              href={getLink(`#${id}`)}
+              className={`transition-colors text-xs ${
+                activeSection === id
+                  ? "text-primary font-medium"
+                  : "text-zinc-500 hover:text-primary font-normal"
+              }`}
+            >
+              {label}
+            </a>
+          ))}
         </nav>
 
         {/* Right Navigation Controls */}
@@ -228,7 +209,7 @@ export default function Header() {
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="text-xs font-medium text-zinc-700 flex items-center gap-x-1.5 focus:outline-none py-1.5 px-2.5 rounded-lg transition-all"
+              className="text-xs font-medium text-zinc-700 flex items-center gap-x-1.5 focus:outline-none py-1.5 sm:px-2.5 rounded-lg transition-all"
             >
               {locale === "en" ? <FlagEn /> : <FlagMs />}
               <span className="uppercase text-[11px] tracking-wide">
@@ -299,50 +280,20 @@ export default function Header() {
       {isOpen && (
         <div className="lg:hidden border-t border-grey bg-white absolute top-16 left-0 w-full shadow-lg z-40">
           <nav className="flex flex-col p-6 gap-y-4 text-sm font-medium text-zinc-650">
-            <a
-              href={getLink("#about")}
-              onClick={() => setIsOpen(false)}
-              className={`py-1 border-b border-light-grey/50 transition-colors text-xs ${
-                activeSection === "about"
-                  ? "text-primary font-medium"
-                  : "text-zinc-500 hover:text-primary"
-              }`}
-            >
-              {locale === "ms" ? "Tentang Kami" : "About Us"}
-            </a>
-            <a
-              href={getLink("#catalog")}
-              onClick={() => setIsOpen(false)}
-              className={`py-1 border-b border-light-grey/50 transition-colors text-xs ${
-                activeSection === "catalog"
-                  ? "text-primary font-medium"
-                  : "text-zinc-500 hover:text-primary"
-              }`}
-            >
-              {locale === "ms" ? "Blog & Artikel" : "Blogs & Articles"}
-            </a>
-            <a
-              href={getLink("#how-it-works")}
-              onClick={() => setIsOpen(false)}
-              className={`py-1 border-b border-light-grey/50 transition-colors text-xs ${
-                activeSection === "how-it-works"
-                  ? "text-primary font-medium"
-                  : "text-zinc-500 hover:text-primary"
-              }`}
-            >
-              {locale === "ms" ? "Buku" : "Books"}
-            </a>
-            <a
-              href={getLink("#faq")}
-              onClick={() => setIsOpen(false)}
-              className={`py-1 border-b border-light-grey/50 transition-colors text-xs ${
-                activeSection === "faq"
-                  ? "text-primary font-medium"
-                  : "text-zinc-500 hover:text-primary"
-              }`}
-            >
-              {locale === "ms" ? "Soalan Lazim" : "FAQs"}
-            </a>
+            {navItems.map(({ id, label }) => (
+              <a
+                key={id}
+                href={getLink(`#${id}`)}
+                onClick={() => setIsOpen(false)}
+                className={`py-1 border-b border-light-grey/50 transition-colors text-xs ${
+                  activeSection === id
+                    ? "text-primary font-medium"
+                    : "text-zinc-500 hover:text-primary"
+                }`}
+              >
+                {label}
+              </a>
+            ))}
 
             <Link
               href="/admin"

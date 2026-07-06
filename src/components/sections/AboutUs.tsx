@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function AboutUs() {
   return (
     <section id="about" className="scroll-mt-20 pb-16 pt-10 w-full">
@@ -5,20 +7,24 @@ export default function AboutUs() {
         {/* Left Text */}
         <div className="flex flex-col justify-center">
           <h2 className="text-xl font-semibold tracking-tight text-primary">
-            About Us
+            Who We Are
           </h2>
           <p className="mt-4 text-sm text-zinc-600 font-light leading-relaxed max-w-lg">
-            Business Alliance is a federal network of commercial real estate
-            agencies. We have been operating since 2015 and help companies –
-            from startups to large corporations – find, rent, and buy office,
-            warehouse, and retail spaces. Our team takes care of the search,
-            negotiations, legal verification, and transaction support until the
-            contract is signed.
+            DrAA Training & Consultancy helps organisations build capable people
+            and high-performing teams. We work with government agencies, GLCs,
+            and private-sector organisations.
           </p>
+          <Image
+            src="/hrd.png"
+            alt="HRD Certificate"
+            width={500}
+            height={500}
+            className="mt-2 h-25 w-25 object-contain grayscale"
+          />
         </div>
 
         {/* Right Stats Grid */}
-        <div className="grid grid-cols-2 pt-14 sm:pt-0 gap-10 gap-x-25 lg:justify-self-end">
+        <div className="grid grid-cols-2 pt-14 sm:pt-0 gap-5 gap-x-25 lg:justify-self-end">
           <div>
             <span className="text-2xl font-semibold text-primary block">
               10+
@@ -52,27 +58,6 @@ export default function AboutUs() {
             </span>
           </div>
         </div>
-      </div>
-
-      {/* Logo Band */}
-      <div className="mt-22 sm:mt-30 border-grey flex flex-wrap items-center justify-around gap-6">
-        {[1, 2, 3, 4, 5, 6].map((idx) => (
-          <div
-            key={idx}
-            className="flex items-center gap-x-2 grayscale opacity-40 hover:opacity-100 transition-opacity"
-          >
-            <svg
-              className="w-5 h-5 text-primary"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-            </svg>
-            <span className="text-xs font-semibold tracking-tight text-zinc-700">
-              Logoipsum
-            </span>
-          </div>
-        ))}
       </div>
     </section>
   );

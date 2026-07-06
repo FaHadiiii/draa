@@ -72,7 +72,7 @@ export default function FoundersCorner() {
                   Our people make the difference
                 </h3>
                 <p className="mt-2 text-xs text-zinc-500 leading-relaxed">
-                  We're an extension of your customer service team, and all of
+                  We&apos;re an extension of your customer service team, and all of
                   our resources are free. Chat to our friendly team 24/7 when
                   you need help.
                 </p>

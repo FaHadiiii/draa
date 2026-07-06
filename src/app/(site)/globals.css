@@ -8,6 +8,7 @@
 @theme {
   --font-sans: var(--font-lexend);
   --color-primary: #002243;
+  --color-accent: #d09834;
   --color-grey: #e8e8e8;
   --color-light-grey: #f4f4f4;
 }

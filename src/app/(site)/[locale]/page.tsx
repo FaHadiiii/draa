@@ -1,6 +1,7 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
+import CompanyLogos from "@/components/sections/CompanyLogos";
 import AboutUs from "@/components/sections/AboutUs";
 import PropertyCatalog from "@/components/sections/PropertyCatalog";
 import HowWeWork from "@/components/sections/HowWeWork";
@@ -16,6 +17,9 @@ export default function Home() {
       <main className="w-full px-6 2xl:px-0 2xl:max-w-7xl 2xl:mx-auto">
         {/* Hero Section */}
         <Hero />
+
+        {/* Company Logos Section */}
+        <CompanyLogos />
 
         {/* About Us Section */}
         <AboutUs />
