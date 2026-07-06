@@ -3,10 +3,7 @@ import { MessageSquare, Search, Map, FileText, CreditCard } from "lucide-react";
 
 export default function HowWeWork() {
   return (
-    <section
-      id="how-it-works"
-      className="scroll-mt-20 px-6 py-8 w-full"
-    >
+    <section id="how-it-works" className="scroll-mt-20 py-8 w-full">
       <div className="grid gap-12 lg:grid-cols-2">
         {/* Left Column: Heading and Image */}
         <div className="flex flex-col justify-between">

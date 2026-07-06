@@ -1,4 +1,68 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState, useRef } from "react";
+
+interface CounterProps {
+  target: number;
+  duration?: number;
+  suffix?: string;
+}
+
+function AnimatedCounter({
+  target,
+  duration = 1500,
+  suffix = "",
+}: CounterProps) {
+  const [count, setCount] = useState(0);
+  const elementRef = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          let startTimestamp: number | null = null;
+
+          const step = (timestamp: number) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min(
+              (timestamp - startTimestamp) / duration,
+              1,
+            );
+            setCount(Math.floor(progress * target));
+
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            } else {
+              setCount(target);
+            }
+          };
+
+          window.requestAnimationFrame(step);
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [target, duration]);
+
+  return (
+    <span ref={elementRef}>
+      {count}
+      {suffix}
+    </span>
+  );
+}
 
 export default function AboutUs() {
   return (
@@ -24,10 +88,10 @@ export default function AboutUs() {
         </div>
 
         {/* Right Stats Grid */}
-        <div className="grid grid-cols-2 pt-14 sm:pt-0 gap-5 gap-x-25 lg:justify-self-end">
+        <div className="grid grid-cols-2 pt-14 sm:pt-0 gap-2 gap-x-25 gap-y-10 sm:gap-y-0 lg:justify-self-end">
           <div>
             <span className="text-2xl font-semibold text-primary block">
-              10+
+              <AnimatedCounter target={10} suffix="+" />
             </span>
             <span className="text-xs font-normal text-zinc-500 mt-1 block">
               Years in the market
@@ -35,7 +99,7 @@ export default function AboutUs() {
           </div>
           <div>
             <span className="text-2xl font-semibold text-primary block">
-              1000+
+              <AnimatedCounter target={1000} suffix="+" />
             </span>
             <span className="text-xs font-normal text-zinc-500 mt-1 block">
               Successful deals
@@ -43,7 +107,7 @@ export default function AboutUs() {
           </div>
           <div>
             <span className="text-2xl font-semibold text-primary block">
-              4000+
+              <AnimatedCounter target={4000} suffix="+" />
             </span>
             <span className="text-xs font-normal text-zinc-500 mt-1 block">
               Properties in database
@@ -51,7 +115,7 @@ export default function AboutUs() {
           </div>
           <div>
             <span className="text-2xl font-semibold text-primary block">
-              95%
+              <AnimatedCounter target={95} suffix="%" />
             </span>
             <span className="text-xs font-normal text-zinc-500 mt-1 block">
               Satisfied clients
