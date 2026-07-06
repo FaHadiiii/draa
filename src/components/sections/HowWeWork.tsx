@@ -8,7 +8,7 @@ export default function HowWeWork() {
         {/* Left Column: Heading and Image */}
         <div className="flex flex-col justify-between">
           <div>
-            <h2 className="text-xl font-semibold tracking-tight text-primary">
+            <h2 className="text-lg font-semibold tracking-tight text-primary">
               How we work
             </h2>
             <p className="mt-2 text-xs text-zinc-500 max-w-md">

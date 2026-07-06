@@ -37,40 +37,41 @@ export default function Hero() {
   ];
 
   return (
-    <section className="py-6 w-full">
-      <div className="w-full sm:h-[calc(100vh-7.5rem)] min-h-[550px] bg-zinc-900 rounded-xl border border-white/10 flex flex-col justify-between p-8 sm:p-12 relative overflow-hidden">
-        {/* Full-width Background Image & Gradient Overlay */}
-        <div className="absolute inset-0 z-0">
-          {/* Mobile Image (Portrait) */}
-          <div className="block lg:hidden relative w-full h-full">
-            <Image
-              src="/hero-potrait.png"
-              alt="Hero background"
-              fill
-              priority
-              className="object-cover object-top"
-              sizes="(max-w-1024px) 100vw"
-            />
-          </div>
-
-          {/* Desktop Image (Landscape) */}
-          <div className="hidden lg:block relative w-full h-full">
-            <Image
-              src="/hero-landscape.png"
-              alt="Hero background"
-              fill
-              priority
-              className="object-cover"
-              sizes="(min-w-1024px) 100vw"
-            />
-          </div>
-
-          {/* Gradient Overlay to ensure text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/90 via-zinc-900/75 to-zinc-900/40 lg:bg-gradient-to-r lg:from-zinc-900/95 lg:via-zinc-900/70 lg:to-transparent z-10" />
+    <section className="w-full sm:h-[calc(100vh-7.5rem)] min-h-[550px] bg-zinc-900 relative overflow-hidden flex flex-col justify-between py-12 sm:py-16">
+      {/* Full-width Background Image & Gradient Overlay */}
+      <div className="absolute inset-0 z-0">
+        {/* Mobile Image (Portrait) */}
+        <div className="block lg:hidden relative w-full h-full">
+          <Image
+            src="/hero-potrait.png"
+            alt="Hero background"
+            fill
+            priority
+            className="object-cover object-top"
+            sizes="(max-w-1024px) 100vw"
+          />
         </div>
 
+        {/* Desktop Image (Landscape) */}
+        <div className="hidden lg:block relative w-full h-full">
+          <Image
+            src="/hero-landscape.png"
+            alt="Hero background"
+            fill
+            priority
+            className="object-cover"
+            sizes="(min-w-1024px) 100vw"
+          />
+        </div>
+
+        {/* Gradient Overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/90 via-zinc-900/75 to-zinc-900/40 lg:bg-gradient-to-r lg:from-zinc-900/95 lg:via-zinc-900/70 lg:to-transparent z-10" />
+      </div>
+
+      {/* Content Container aligned with main page grid */}
+      <div className="relative z-20 max-w-7xl mx-auto w-full flex-grow flex flex-col justify-between px-6 2xl:px-0">
         {/* Content Section (Top/Middle) */}
-        <div className="relative z-20 flex flex-col justify-center flex-1 max-w-2xl items-center text-center lg:items-start lg:text-start mx-auto lg:mx-0">
+        <div className="flex flex-col justify-center flex-1 max-w-2xl items-center text-center lg:items-start lg:text-start mx-auto lg:mx-0">
           {/* Heading (Text sizing preserved exactly as original) */}
           <div className="flex flex-col text-xl sm:text-3xl font-semibold tracking-tight text-white max-w-2xl leading-tight items-center text-center lg:items-start lg:text-start">
             <h2>
@@ -98,7 +99,7 @@ export default function Hero() {
             </Link>
             <Link
               href="#services"
-              className="border border-white/20 text-white hover:bg-white/10 bg-white/5 backdrop-blur-sm px-4.5 py-2 text-xs font-medium rounded-lg transition-all inline-flex items-center justify-center"
+              className="border border-white/20 text-white hover:bg-white/10 px-4 py-2 text-xs font-medium rounded-lg transition-all inline-flex items-center justify-center"
             >
               {secondaryBtnText}
             </Link>
@@ -106,7 +107,7 @@ export default function Hero() {
         </div>
 
         {/* Highlight Points (Bottom Left) */}
-        <div className="relative z-20 mt-12 pt-6 grid grid-cols-3 gap-3 sm:gap-6 max-w-xl w-full mx-auto lg:mx-0">
+        <div className="mt-12 pt-6 grid grid-cols-3 gap-3 sm:gap-0 max-w-lg w-full mx-auto lg:mx-0">
           {highlights.map((item, idx) => (
             <div
               key={idx}
@@ -119,7 +120,7 @@ export default function Hero() {
                 <span className="text-[11px] sm:text-xs font-semibold text-white leading-tight">
                   {item.value}
                 </span>
-                <span className="text-[10px] sm:text-[11px] text-zinc-400 font-light mt-0.5 leading-tight">
+                <span className="text-[10px] sm:text-[11px] text-zinc-300 font-light mt-0.5 leading-tight">
                   {item.label}
                 </span>
               </div>

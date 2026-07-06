@@ -5,7 +5,7 @@ export default function PropertyCatalog() {
     <section id="catalog" className="scroll-mt-20 py-8 w-full">
       <div className="flex sm:flex-col md:flex-row md:items-end justify-between mb-8">
         <div>
-          <h2 className="text-xl font-semibold tracking-tight text-primary">
+          <h2 className="text-lg font-semibold tracking-tight text-primary">
             Property Catalog
           </h2>
           <p className="mt-1.5 text-xs text-zinc-500 sm:block hidden">

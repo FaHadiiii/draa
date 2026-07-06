@@ -14,13 +14,13 @@ export default function Home() {
       {/* Header / Navbar */}
       <Header />
 
+      {/* Hero Section */}
+      <Hero />
+
+      {/* Company Logos Section */}
+      <CompanyLogos />
+
       <main className="w-full px-6 2xl:px-0 2xl:max-w-7xl 2xl:mx-auto">
-        {/* Hero Section */}
-        <Hero />
-
-        {/* Company Logos Section */}
-        <CompanyLogos />
-
         {/* About Us Section */}
         <AboutUs />
 

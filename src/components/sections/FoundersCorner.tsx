@@ -5,7 +5,7 @@ export default function FoundersCorner() {
     <section className="py-8 w-full">
       <div className="flex sm:flex-col md:flex-row md:items-end justify-between mb-8">
         <div>
-          <h2 className="text-xl font-semibold tracking-tight text-primary">
+          <h2 className="text-lg font-semibold tracking-tight text-primary">
             Founders corner
           </h2>
         </div>
@@ -72,8 +72,8 @@ export default function FoundersCorner() {
                   Our people make the difference
                 </h3>
                 <p className="mt-2 text-xs text-zinc-500 leading-relaxed">
-                  We&apos;re an extension of your customer service team, and all of
-                  our resources are free. Chat to our friendly team 24/7 when
+                  We&apos;re an extension of your customer service team, and all
+                  of our resources are free. Chat to our friendly team 24/7 when
                   you need help.
                 </p>
               </div>

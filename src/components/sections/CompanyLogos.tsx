@@ -48,7 +48,7 @@ export default function CompanyLogos() {
     : companies;
 
   return (
-    <section className="sm:pb-32 pb-24 pt-14 w-full overflow-hidden">
+    <section className="bg-light-grey w-full py-10 sm:py-18 overflow-hidden sm:mb-20">
       {isOverflowing && (
         <style>{`
           @keyframes marquee {
@@ -65,7 +65,7 @@ export default function CompanyLogos() {
       )}
 
       <div className="flex flex-col items-center w-full">
-        <p className="text-xs font-normal text-zinc-400 mb-10 text-center px-4">
+        <p className="text-xs font-normal text-zinc-400 mb-10 text-center px-4 -mt-2">
           {label}
         </p>
 

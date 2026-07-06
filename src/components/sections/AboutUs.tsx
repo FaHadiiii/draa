@@ -70,7 +70,7 @@ export default function AboutUs() {
       <div className="grid lg:grid-cols-2">
         {/* Left Text */}
         <div className="flex flex-col justify-center">
-          <h2 className="text-xl font-semibold tracking-tight text-primary">
+          <h2 className="text-lg font-semibold tracking-tight text-primary">
             Who We Are
           </h2>
           <p className="mt-4 text-sm text-zinc-600 font-light leading-relaxed max-w-lg">
