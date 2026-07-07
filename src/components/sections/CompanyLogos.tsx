@@ -9,6 +9,11 @@ export default function CompanyLogos() {
   const locale = (params?.locale as string) || "en";
   const containerRef = useRef<HTMLDivElement>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const companies = [
     { name: "Kementerian Pendidikan Malaysia", logo: "/company/kpm.png" },
@@ -48,7 +53,9 @@ export default function CompanyLogos() {
     : companies;
 
   return (
-    <section className="bg-light-grey w-full py-10 sm:py-18 overflow-hidden sm:mb-20">
+    <section className={`bg-light-grey w-full py-10 sm:py-18 overflow-hidden sm:mb-20 transition-opacity duration-1000 delay-300 ease-out ${
+      isVisible ? "opacity-100" : "opacity-0"
+    }`}>
       {isOverflowing && (
         <style>{`
           @keyframes marquee {

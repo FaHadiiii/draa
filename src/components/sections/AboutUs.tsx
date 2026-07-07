@@ -2,6 +2,14 @@
 
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
+import { useParams } from "next/navigation";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin on client side
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface CounterProps {
   target: number;
@@ -65,62 +73,131 @@ function AnimatedCounter({
 }
 
 export default function AboutUs() {
+  const params = useParams();
+  const locale = (params?.locale as string) || "en";
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const leftRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Left text and certificate animation
+      if (leftRef.current) {
+        gsap.fromTo(
+          leftRef.current,
+          {
+            opacity: 0,
+            x: -30,
+          },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 85%",
+              once: true,
+            },
+          },
+        );
+      }
+
+      // Right stats staggered animation
+      const activeStats = statsRef.current.filter((s) => s !== null);
+      if (activeStats.length > 0) {
+        gsap.fromTo(
+          activeStats,
+          {
+            opacity: 0,
+            y: 35,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.15,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 85%",
+              once: true,
+            },
+          },
+        );
+      }
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const stats = [
+    {
+      target: 10,
+      suffix: "+",
+      label: locale === "ms" ? "Tahun Pengalaman" : "Years of Experience",
+    },
+    {
+      target: 100,
+      suffix: "+",
+      label: locale === "ms" ? "Organisasi Dilatih" : "Organisations Trained",
+    },
+    {
+      target: 5000,
+      suffix: "+",
+      label: locale === "ms" ? "Peserta Diperkasa" : "Participants Empowered",
+    },
+    {
+      target: 98,
+      suffix: "%",
+      label: locale === "ms" ? "Kadar Kepuasan" : "Satisfaction Rate",
+    },
+  ];
+
   return (
-    <section id="about" className="scroll-mt-20 pb-16 pt-10 w-full">
-      <div className="grid lg:grid-cols-2">
+    <section
+      id="about"
+      ref={containerRef}
+      className="scroll-mt-20 pb-16 pt-10 w-full overflow-hidden"
+    >
+      <div className="grid lg:grid-cols-2 gap-8 lg:gap-0">
         {/* Left Text */}
-        <div className="flex flex-col justify-center">
+        <div ref={leftRef} className="flex flex-col justify-center">
           <h2 className="text-lg font-semibold tracking-tight text-primary">
-            Who We Are
+            {locale === "ms" ? "Siapa Kami" : "Who We Are"}
           </h2>
           <p className="mt-4 text-sm text-zinc-600 font-light leading-relaxed max-w-lg">
-            DrAA Training & Consultancy helps organisations build capable people
-            and high-performing teams. We work with government agencies, GLCs,
-            and private-sector organisations.
+            {locale === "ms"
+              ? "DrAA Training & Consultancy membantu organisasi membina modal insan berkebolehan dan pasukan berprestasi tinggi. Kami bekerjasama dengan agensi kerajaan, GLC, dan organisasi sektor swasta."
+              : "DrAA Training & Consultancy helps organisations build capable people and high-performing teams. We work with government agencies, GLCs, and private-sector organisations."}
           </p>
           <Image
             src="/hrd.png"
             alt="HRD Certificate"
             width={500}
             height={500}
-            className="mt-2 h-25 w-25 object-contain grayscale"
+            className="mt-4 h-25 w-25 object-contain grayscale"
           />
         </div>
 
         {/* Right Stats Grid */}
-        <div className="grid grid-cols-2 pt-14 sm:pt-0 gap-2 gap-x-25 gap-y-10 sm:gap-y-0 lg:justify-self-end">
-          <div>
-            <span className="text-2xl font-semibold text-primary block">
-              <AnimatedCounter target={10} suffix="+" />
-            </span>
-            <span className="text-xs font-normal text-zinc-500 mt-1 block">
-              Years in the market
-            </span>
-          </div>
-          <div>
-            <span className="text-2xl font-semibold text-primary block">
-              <AnimatedCounter target={1000} suffix="+" />
-            </span>
-            <span className="text-xs font-normal text-zinc-500 mt-1 block">
-              Successful deals
-            </span>
-          </div>
-          <div>
-            <span className="text-2xl font-semibold text-primary block">
-              <AnimatedCounter target={4000} suffix="+" />
-            </span>
-            <span className="text-xs font-normal text-zinc-500 mt-1 block">
-              Properties in database
-            </span>
-          </div>
-          <div>
-            <span className="text-2xl font-semibold text-primary block">
-              <AnimatedCounter target={95} suffix="%" />
-            </span>
-            <span className="text-xs font-normal text-zinc-500 mt-1 block">
-              Satisfied clients
-            </span>
-          </div>
+        <div className="grid grid-cols-2 pt-6 sm:pt-0 gap-2 gap-x-12 sm:gap-x-30 gap-y-10 lg:justify-self-end items-center">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              ref={(el) => {
+                statsRef.current[index] = el;
+              }}
+            >
+              <span className="text-2xl font-semibold text-primary block">
+                <AnimatedCounter target={stat.target} suffix={stat.suffix} />
+              </span>
+              <span className="text-xs font-light text-zinc-500 mt-1 block">
+                {stat.label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

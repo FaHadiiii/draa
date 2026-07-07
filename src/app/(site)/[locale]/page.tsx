@@ -3,10 +3,12 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import CompanyLogos from "@/components/sections/CompanyLogos";
 import AboutUs from "@/components/sections/AboutUs";
-import PropertyCatalog from "@/components/sections/PropertyCatalog";
-import HowWeWork from "@/components/sections/HowWeWork";
+import Services from "@/components/sections/Services";
+import DomainExpertise from "@/components/sections/DomainExpertise";
+import HowWeWork from "@/components/sections/Methodology";
+import PrincipalConsultant from "@/components/sections/PrincipalConsultant";
 import FoundersCorner from "@/components/sections/FoundersCorner";
-import CTA from "@/components/sections/CTA";
+
 
 export default function Home() {
   return (
@@ -24,17 +26,24 @@ export default function Home() {
         {/* About Us Section */}
         <AboutUs />
 
-        {/* Property Catalog Section */}
-        <PropertyCatalog />
+        {/* Services Section */}
+        <Services />
+
+        {/* Domain Expertise Section */}
+        <DomainExpertise />
 
         {/* How we work Section */}
         <HowWeWork />
+      </main>
 
+      {/* Principal Consultant Section */}
+      <PrincipalConsultant />
+
+      <main className="w-full px-6 2xl:px-0 2xl:max-w-7xl 2xl:mx-auto">
         {/* Founders corner Section */}
         <FoundersCorner />
 
-        {/* CTA Section */}
-        <CTA />
+
       </main>
 
       {/* Footer */}

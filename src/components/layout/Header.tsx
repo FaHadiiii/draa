@@ -76,7 +76,7 @@ const navItems = [
   { id: "services", label: "Services" },
   { id: "domain", label: "Domain" },
   { id: "methodology", label: "Methodology" },
-  { id: "founder", label: "Founder" },
+  { id: "founder", label: "Consultant" },
   { id: "insights", label: "Insights" },
 ] as const;
 
@@ -89,6 +89,19 @@ export default function Header() {
   const router = useRouter();
 
   const locale = (params?.locale as string) || "en";
+
+  const translateNav = (id: string, defaultLabel: string) => {
+    if (locale !== "ms") return defaultLabel;
+    const msDict: Record<string, string> = {
+      about: "Tentang Kami",
+      services: "Perkhidmatan",
+      domain: "Kepakaran",
+      methodology: "Metodologi",
+      founder: "Konsultan",
+      insights: "Artikel",
+    };
+    return msDict[id] || defaultLabel;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -198,7 +211,7 @@ export default function Header() {
                   : "text-zinc-500 hover:text-primary font-normal"
               }`}
             >
-              {label}
+              {translateNav(id, label)}
             </a>
           ))}
         </nav>
@@ -291,7 +304,7 @@ export default function Header() {
                     : "text-zinc-500 hover:text-primary"
                 }`}
               >
-                {label}
+                {translateNav(id, label)}
               </a>
             ))}
 

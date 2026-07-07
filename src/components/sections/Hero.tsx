@@ -1,11 +1,16 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { Briefcase, ShieldCheck, Landmark } from "lucide-react";
 
 export default function Hero() {
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
   const params = useParams();
   const locale = (params?.locale as string) || "en";
 
@@ -69,7 +74,9 @@ export default function Hero() {
       </div>
 
       {/* Content Container aligned with main page grid */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full flex-grow flex flex-col justify-between px-6 2xl:px-0">
+      <div className={`relative z-20 max-w-7xl mx-auto w-full flex-grow flex flex-col justify-between px-6 2xl:px-0 transition-opacity duration-1000 ease-out ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}>
         {/* Content Section (Top/Middle) */}
         <div className="flex flex-col justify-center flex-1 max-w-2xl items-center text-center lg:items-start lg:text-start mx-auto lg:mx-0">
           {/* Heading (Text sizing preserved exactly as original) */}
