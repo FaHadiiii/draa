@@ -9,7 +9,14 @@ const lexend = Lexend({
 
 export const metadata: Metadata = {
   title: "DrAA Training & Consultancy",
-  description: "Bilingual platform for training and consultancy",
+  description: "Training and consultancy provider",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+  },
 };
 
 export default async function RootLayout({
