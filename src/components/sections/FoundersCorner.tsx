@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function FoundersCorner() {
   return (
-    <section className="py-8 w-full">
+    <section id="insights" className="scroll-mt-20 py-8 w-full">
       <div className="flex sm:flex-col md:flex-row md:items-end justify-between mb-8">
         <div>
           <h2 className="text-lg font-semibold tracking-tight text-primary">

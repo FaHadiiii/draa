@@ -9,7 +9,6 @@ import HowWeWork from "@/components/sections/Methodology";
 import PrincipalConsultant from "@/components/sections/PrincipalConsultant";
 import FoundersCorner from "@/components/sections/FoundersCorner";
 
-
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-white text-primary font-sans antialiased">
@@ -42,8 +41,6 @@ export default function Home() {
       <main className="w-full px-6 2xl:px-0 2xl:max-w-7xl 2xl:mx-auto">
         {/* Founders corner Section */}
         <FoundersCorner />
-
-
       </main>
 
       {/* Footer */}
