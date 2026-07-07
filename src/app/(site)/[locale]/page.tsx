@@ -7,7 +7,7 @@ import Services from "@/components/sections/Services";
 import DomainExpertise from "@/components/sections/DomainExpertise";
 import HowWeWork from "@/components/sections/Methodology";
 import PrincipalConsultant from "@/components/sections/PrincipalConsultant";
-import FoundersCorner from "@/components/sections/FoundersCorner";
+import Insights from "@/components/sections/Insights";
 
 export default function Home() {
   return (
@@ -39,8 +39,8 @@ export default function Home() {
       <PrincipalConsultant />
 
       <main className="w-full px-6 2xl:px-0 2xl:max-w-7xl 2xl:mx-auto">
-        {/* Founders corner Section */}
-        <FoundersCorner />
+        {/* Insights Section */}
+        <Insights />
       </main>
 
       {/* Footer */}

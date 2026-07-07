@@ -14,8 +14,8 @@ export default function PrincipalConsultant() {
   const bottomArrowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let topAnim: any = null;
-    let bottomAnim: any = null;
+    let topAnim: ReturnType<typeof lottie.loadAnimation> | null = null;
+    let bottomAnim: ReturnType<typeof lottie.loadAnimation> | null = null;
 
     if (topArrowRef.current) {
       topAnim = lottie.loadAnimation({
@@ -78,7 +78,7 @@ export default function PrincipalConsultant() {
       <div className="max-w-7xl mx-auto px-6 2xl:px-0">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] items-center">
           {/* Left Column: Portrait cutout & Arrow Annotations */}
-          <div className="relative w-full h-[350px] sm:h-[300px] lg:h-[400px] flex items-center justify-center bg-transparent order-last lg:order-first">
+          <div className="relative w-full h-[320px] sm:h-[300px] lg:h-[400px] flex items-center justify-center bg-transparent order-last lg:order-first">
             {/* Portrait cutout */}
             <div className="relative h-full aspect-[3/4] z-10">
               <Image
@@ -92,10 +92,21 @@ export default function PrincipalConsultant() {
 
             {/* Top-Left Annotation (PhD) */}
             <div className="absolute top-[2%] left-0 sm:left-[15%] z-20 flex flex-col items-center">
-              <div className="bg-white border border-zinc-200/60 px-3 py-1.5 rounded-lg text-[9px] font-semibold text-zinc-800 shadow-xs select-none">
-                {locale === "ms"
-                  ? "PhD dalam Sains Politik"
-                  : "PhD in Political Science"}
+              <div className="bg-white border border-zinc-200/60 px-2 py-1.5 rounded-lg text-[9px] font-semibold text-zinc-800 shadow-xs select-none flex items-center gap-2">
+                <div className="relative w-6 h-5 shrink-0 flex items-center justify-center">
+                  <Image
+                    src="/company/um.png"
+                    alt="UM Logo"
+                    fill
+                    sizes="20px"
+                    className="object-cover"
+                  />
+                </div>
+                <span>
+                  {locale === "ms"
+                    ? "PhD dalam Sains Politik"
+                    : "PhD in Political Science"}
+                </span>
               </div>
               <div className="w-10 h-10 opacity-70 transform rotate-[10deg] pointer-events-none">
                 <div ref={topArrowRef} className="w-full h-full" />
@@ -103,11 +114,22 @@ export default function PrincipalConsultant() {
             </div>
 
             {/* Bottom-Right Annotation (HRD Corp) */}
-            <div className="absolute bottom-[10%] right-0 sm:right-[15%] z-20 flex flex-col items-center">
-              <div className="bg-white border border-zinc-200/60 px-3 py-1.5 rounded-lg text-[9px] font-semibold text-zinc-800 shadow-xs select-none">
-                {locale === "ms"
-                  ? "Jurulatih Bertauliah HRD"
-                  : "HRD Certified Trainer"}
+            <div className="absolute bottom-[10%] right-[5%] sm:right-[15%] z-20 flex flex-col items-center">
+              <div className="bg-white border border-zinc-200/60 px-2 py-1.5 rounded-lg text-[9px] font-semibold text-zinc-800 shadow-xs select-none flex items-center gap-2">
+                <div className="relative w-5 h-4 shrink-0 flex items-center justify-center">
+                  <Image
+                    src="/hrd-logo.png"
+                    alt="HRD Corp Logo"
+                    fill
+                    sizes="20px"
+                    className="object-cover"
+                  />
+                </div>
+                <span>
+                  {locale === "ms"
+                    ? "Jurulatih Bertauliah"
+                    : "Certified Trainer"}
+                </span>
               </div>
               <div className="w-10 h-10 mt-1 opacity-70 transform rotate-[150deg] scale-y-[-1] pointer-events-none">
                 <div ref={bottomArrowRef} className="w-full h-full" />
@@ -119,7 +141,7 @@ export default function PrincipalConsultant() {
           <div className="flex flex-col justify-center sm:mb-12 mb-6 order-first lg:order-none">
             <div>
               <span className="text-xs font-normal text-accent">{title}</span>
-              <h3 className="text-xl font-semibold tracking-tight text-zinc-850 mt-3">
+              <h3 className="text-lg font-semibold tracking-tight text-zinc-850 mt-2">
                 Dr. Azrie Azeh
               </h3>
               <p className="text-xs text-zinc-400 font-light tracking-wide mt-1.5">
@@ -152,7 +174,7 @@ export default function PrincipalConsultant() {
               <span className="text-accent text-5xl font-serif leading-none select-none opacity-95 shrink-0">
                 &ldquo;
               </span>
-              <p className="text-zinc-600 text-sm font-light leading-relaxed italic mt-2 max-w-xl">
+              <p className="text-zinc-600 text-[13px] font-light leading-relaxed italic mt-2 max-w-xl">
                 {quote}
               </p>
             </div>

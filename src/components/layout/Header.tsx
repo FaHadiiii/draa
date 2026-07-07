@@ -168,6 +168,24 @@ export default function Header() {
     }
   };
 
+  const handleScrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+  ) => {
+    const segments = pathname?.split("/") || [];
+    const isHome =
+      segments.length <= 2 || (segments.length === 3 && segments[2] === "");
+    if (isHome) {
+      e.preventDefault();
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `#${id}`);
+        setActiveSection(id);
+      }
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md">
       <div className="px-6 2xl:px-0 2xl:max-w-7xl 2xl:mx-auto h-16 flex items-center justify-between relative">
@@ -205,6 +223,7 @@ export default function Header() {
             <a
               key={id}
               href={getLink(`#${id}`)}
+              onClick={(e) => handleScrollToSection(e, id)}
               className={`transition-colors text-xs ${
                 activeSection === id
                   ? "text-primary font-medium"
@@ -297,7 +316,10 @@ export default function Header() {
               <a
                 key={id}
                 href={getLink(`#${id}`)}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  handleScrollToSection(e, id);
+                }}
                 className={`py-1 border-b border-light-grey/50 transition-colors text-xs ${
                   activeSection === id
                     ? "text-primary font-medium"

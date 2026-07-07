@@ -1,71 +1,35 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Register ScrollTrigger plugin on client side
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export default function Services() {
   const params = useParams();
   const locale = (params?.locale as string) || "en";
   const containerRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Left title animation
-      if (titleRef.current) {
-        gsap.fromTo(
-          titleRef.current,
-          {
-            opacity: 0,
-            x: -30,
-          },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 85%",
-              once: true,
-            },
-          },
-        );
-      }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.1,
+      },
+    );
 
-      // Staggered cards animation
-      const activeCards = cardsRef.current.filter((c) => c !== null);
-      if (activeCards.length > 0) {
-        gsap.fromTo(
-          activeCards,
-          {
-            y: 80,
-          },
-          {
-            y: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top 85%",
-              once: true,
-            },
-          },
-        );
-      }
-    }, containerRef);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
 
-    return () => ctx.revert();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const services = [
@@ -103,7 +67,13 @@ export default function Services() {
     >
       <div className="grid gap-8 lg:grid-cols-4">
         {/* Left Column: Title & Subtitle */}
-        <div ref={titleRef} className="lg:col-span-1 flex flex-col justify-start">
+        <div
+          className={`lg:col-span-1 flex flex-col justify-start transition-all duration-1000 ease-out ${
+            isVisible
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 -translate-x-[30px]"
+          }`}
+        >
           <h2 className="text-lg font-semibold tracking-tight text-primary">
             {locale === "ms" ? "Perkhidmatan Ditawarkan" : "Services Offered"}
           </h2>
@@ -119,10 +89,12 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              ref={(el) => {
-                cardsRef.current[index] = el;
-              }}
-              className="flex flex-col bg-white rounded-xl border border-grey overflow-hidden group shadow-sm hover:shadow-md transition-all duration-300"
+              className={`flex flex-col bg-white rounded-xl border border-grey overflow-hidden group shadow-sm hover:shadow-md transition-all duration-1000 hover:duration-300 ease-out ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-20"
+              }`}
+              style={{ transitionDelay: `${index * 200}ms` }}
             >
               <div className="p-1 pb-0">
                 <div className="h-48 relative overflow-hidden rounded-lg bg-zinc-100">

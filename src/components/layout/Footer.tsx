@@ -102,6 +102,19 @@ export default function Footer() {
                 <li key={id}>
                   <a
                     href={getLink(`#${id}`)}
+                    onClick={(e) => {
+                      const segments = pathname?.split("/") || [];
+                      const isHome =
+                        segments.length <= 2 || (segments.length === 3 && segments[2] === "");
+                      if (isHome) {
+                        e.preventDefault();
+                        const el = document.getElementById(id);
+                        if (el) {
+                          el.scrollIntoView({ behavior: "smooth" });
+                          window.history.pushState(null, "", `#${id}`);
+                        }
+                      }
+                    }}
                     className="text-zinc-500 hover:text-primary transition-colors text-xs font-light"
                   >
                     {label}
