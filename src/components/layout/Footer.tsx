@@ -105,7 +105,8 @@ export default function Footer() {
                     onClick={(e) => {
                       const segments = pathname?.split("/") || [];
                       const isHome =
-                        segments.length <= 2 || (segments.length === 3 && segments[2] === "");
+                        segments.length <= 2 ||
+                        (segments.length === 3 && segments[2] === "");
                       if (isHome) {
                         e.preventDefault();
                         const el = document.getElementById(id);
@@ -133,19 +134,19 @@ export default function Footer() {
               <div className="flex items-center gap-x-2 text-zinc-500 text-xs font-light">
                 <Mail className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
                 <a
-                  href="mailto:info@draa.com.my"
+                  href="mailto:hello@draa.my"
                   className="hover:text-primary transition-colors"
                 >
-                  info@draa.my
+                  hello@draa.my
                 </a>
               </div>
               <div className="flex items-center gap-x-2 text-zinc-500 text-xs font-light mt-1">
                 <Phone className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
                 <a
-                  href="tel:+60123456789"
+                  href="tel:+60192113986"
                   className="hover:text-primary transition-colors"
                 >
-                  +60 12-345 6789
+                  +60 19-211 3986
                 </a>
               </div>
             </div>
